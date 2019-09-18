@@ -73,18 +73,18 @@ exports.app.get('/*', renderIndex);
  * Server with gzip compression.
  */
 
-setTimeout(() => {
-  client.ping({
-    // ping usually has a 3000ms timeout
-    requestTimeout: 1000
-  }, function (error) {
-    if (error) {
-      console.trace('elasticsearch cluster is down!');
-    } else {
-      console.log('All is well');
-    }
-  });
-}, 1000);
+// setTimeout(() => {
+//   client.ping({
+//     // ping usually has a 3000ms timeout
+//     requestTimeout: 1000
+//   }, function (error) {
+//     if (error) {
+//       console.trace('elasticsearch cluster is down!');
+//     } else {
+//       console.log('All is well');
+//     }
+//   });
+// }, 1000);
 
 
 
@@ -105,9 +105,20 @@ setTimeout(() => {
 // }, 1000);
 
 
+// setTimeout(() => {
+//   const indices =  client.cat.indices({format: 'json'})
+//   console.log('indices:', indices)
+//
+// }, 1000);
+
+async function getListing(){
+  const response = await client.search({
+    index: 'myindex-2'
+  });
+}
+
 setTimeout(() => {
-  const indices =  client.cat.indices({format: 'json'})
-  console.log('indices:', indices)
+  getListing();
 
 }, 1000);
 
