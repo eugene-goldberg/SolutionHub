@@ -86,6 +86,33 @@ setTimeout(() => {
   });
 }, 1000);
 
+
+
+
+// setTimeout(() => {
+//    client.index({
+//     index: 'myindex-2',
+//     type: 'mytype-2',
+//     id: '1',
+//     body: {
+//       title: 'Test 2',
+//       tags: ['a', 'f'],
+//       published: true,
+//       published_at: '2013-01-02',
+//       counter: 1
+//     }
+//   });
+// }, 1000);
+
+
+setTimeout(() => {
+  const indices =  client.cat.indices({format: 'json'})
+  console.log('indices:', indices)
+
+}, 1000);
+
+
+
 const server = exports.app.listen(3000);
 const serverPort = server.address().port;
 console.log(`App is listening on port: ${serverPort}`);
